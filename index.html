@@ -1,11 +1,44 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<script type="text/javascript">
+function startTimer(duration, display) {
+    var timer = duration, hours, minutes, seconds;
+    setInterval(function () {
+    	
+    	hours = parseInt(timer / 3600 , 10);
+    	timer = timer - (hours * 3600);
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        hours  = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.textContent = hours + ":" + minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+	var bdaydate = new Date(2015,7,9,0,0,0);
+    var amountoftimeuntilsarasbirthday = (bdaydate.time() - Date.now()) / 1000;
+    display = document.querySelector('#time');
+    startTimer(amountoftimeuntilsarasbirthday, display);
+};
+</script>
+
 <meta charset="ISO-8859-1">
 <title>Sara's Birthday</title>
 </head>
 <body background="http://www.funnypugpictures.co.uk//wp-content/uploads/2014/07/funny-pug-wearing-party-hat.jpg">
-<div style="background-color:rgba(192,192,192,0.3);width:45%"><h1>Choose Your Own Adventure</h1>
+<div style="background-color:rgba(192,192,192,0.3);width:45%">
+<div><h1>Sara's Birthday starts in <span id="time"></span></h1></div>
+<h1>Choose Your Own Adventure</h1>
 <h3>7:00AM - Run<br>
 <br>
      OR<br>
