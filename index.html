@@ -26,7 +26,7 @@ function startTimer(duration, display) {
 
 window.onload = function () {
 	var bdaydate = new Date(2015,7,9,0,0,0);
-    var amountoftimeuntilsarasbirthday = (bdaydate.time() - Date.now()) / 1000;
+    var amountoftimeuntilsarasbirthday = (bdaydate.getTime() - Date.now()) / 1000;
     display = document.querySelector('#time');
     startTimer(amountoftimeuntilsarasbirthday, display);
 };
